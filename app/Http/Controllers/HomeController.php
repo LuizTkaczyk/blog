@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function __invoke() //uso do invoke para usar uma única rota
     {
-        return view('welcome');
+        return view('home');
     }
 
 }
