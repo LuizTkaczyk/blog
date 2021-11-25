@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         //chamando a classe CursoSeeder criada para inserir os dados na tabela
         //$this->call(CursoSeeder::class);
         User::factory(10)->create();
-        Curso::factory(50)->create();
+        Curso::factory(20)->create();
       
     }
 }

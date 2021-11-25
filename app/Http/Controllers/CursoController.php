@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 
-
+use App\Http\Requests\StoreCurso;
 
 class CursoController extends Controller
 {
@@ -22,26 +22,31 @@ class CursoController extends Controller
         return view('cursos.create');
     }
 
-    public function store(Request $request)
+
+    //$request é um objeto do tipo StoreCurso, fazendo assim as validações
+    public function store(StoreCurso $request)
     {
         //SALVANDO OS REGISTROS
 
-        //criando validações
-        $request->validate([
-            'nome' => 'required|max:15',
-            'descricao' => 'required|min:5',
-            'categoria' => 'required|min:5'
-        ]);
+        // $curso = new Curso();
 
-        $curso = new Curso();
+        // $curso->nome = $request->nome;
+        // $curso->descricao = $request->descricao;
+        // $curso->categoria = $request->categoria;
 
-        $curso->nome = $request->nome;
-        $curso->descricao = $request->descricao;
-        $curso->categoria = $request->categoria;
+        // $curso->save();
 
-        $curso->save();
 
-        return redirect()->route('cursos.show', $curso->id);
+        // $curso = Curso::create([
+        //     'nome' => $request->nome,
+        //     'descricao' => $request->descricao,
+        //     'categoria' => $request->categoria
+        // ]);
+
+        //cria os campos no bd dinamicamente
+        $curso = Curso::create($request->all());
+
+        return redirect()->route('cursos.show', $curso);
     }
 
     public function show(Curso $curso)
@@ -59,19 +64,29 @@ class CursoController extends Controller
 
     public function update(Request $request, Curso $curso)
     {
-         //criando validações PARA A EDIÇÃO
-         $request->validate([
+        //criando validações PARA A EDIÇÃO
+        $request->validate([
             'nome' => 'required',
             'descricao' => 'required',
             'categoria' => 'required'
         ]);
 
         //o parametro nome do bando de dados recebe o parametro nome do formulario
-        $curso->nome = $request->nome;
-        $curso->categoria = $request->categoria;
-        $curso->descricao = $request->descricao;
+        // $curso->nome = $request->nome;
+        // $curso->categoria = $request->categoria;
+        // $curso->descricao = $request->descricao;
 
-        $curso->save();
+        // $curso->save();
+
+        $curso->update($request->all());
+
         return redirect()->route('cursos.show', $curso->id);
+    }
+
+    public function destroy(Curso $curso)
+    {
+        $curso->delete();
+        return redirect()->route('cursos.index');
+        
     }
 }

@@ -9,7 +9,7 @@
     <div class="flex justify-center">
 
 
-        <form class="w-full max-w-sm" action="{{ route('cursos.atualizar', $curso) }}" method="POST">
+        <form class="w-full max-w-sm" action="{{ route('cursos.update', $curso) }}" method="POST">
             @csrf
             @method('PUT')
             <h1 class="text-xl font-semibold">Esta página é para editar os cursos</h1>

@@ -23,7 +23,7 @@
 
     </ul> --}}
     <div class="flex justify-center">
-       <h1> <a href="{{ route('cursos.criar') }}">Criar mais cursos</a></h1>
+       <h1> <a href="{{ route('cursos.create') }}">Criar mais cursos</a></h1>
     </div>
 
 
