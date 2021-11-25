@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Curso;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +17,9 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         //chamando a classe CursoSeeder criada para inserir os dados na tabela
-        $this->call(CursoSeeder::class);
+        //$this->call(CursoSeeder::class);
+        User::factory(10)->create();
+        Curso::factory(50)->create();
       
     }
 }
