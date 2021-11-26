@@ -34,6 +34,7 @@
             @error('nome')
                 <small>*{{ $message }}</small>
             @enderror
+            <input type = "hidden" name = "slug" value = "slug"> 
 
             <div class="md:flex md:items-center mb-6">
                 <div class="md:w-1/3">

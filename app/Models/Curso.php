@@ -17,4 +17,12 @@ class Curso extends Model
     //com guarded é o contrário, ignorando os campos permitidos
     protected $guarded = [];
 
+
+    //função para url amigavel
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+
 }

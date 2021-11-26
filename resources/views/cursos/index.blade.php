@@ -42,12 +42,15 @@
                 @foreach ($cursos as $curso)
                     <tr>
                         <td class="border px-4 py-1">{{ $curso->id }}</td>
+
                         <td class="border px-4 py-2"> <a
-                                href="{{ route('cursos.show', $curso->id) }}">{{ $curso->nome }}</a>
+                                href="{{ route('cursos.show', $curso) }}">{{ $curso->nome }}</a>
+                               
                         </td>
+                      
                         <td class="border px-4 py-2">{{ $curso->categoria }}</td>
 
-                    </tr>
+                    </tr> 
 
                 @endforeach
             </tbody>

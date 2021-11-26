@@ -19,13 +19,11 @@ class CursoFactory extends Factory
     public function definition()
     {
 
-        $name = $this->faker->sentence();
+        $nome = $this->faker->sentence();
         return [
-            //criando url's amigaveis
-            'nome' => $name,
-
-            'slug' => Str::slug($name,'-'),
-
+            //criando url's amigaveis com slug
+            'nome' => $nome,
+            'slug' => Str::slug($nome,'-'),
             'descricao' => $this->faker->paragraph(),
             'categoria' => $this->faker->randomElement(['Dev. web', 'Web design', 'Web design'])
         ];

@@ -6,6 +6,7 @@ use App\Models\Curso;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\StoreCurso;
+use Illuminate\Support\Str;
 
 class CursoController extends Controller
 {
@@ -77,6 +78,9 @@ class CursoController extends Controller
         // $curso->descricao = $request->descricao;
 
         // $curso->save();
+        $request-> merge ([
+            'slug' => Str::slug ($request->nome),
+          ]);
 
         $curso->update($request->all());
 
